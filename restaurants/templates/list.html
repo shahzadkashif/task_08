@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}List{% endblock title %}
+{% block title %} List{% endblock title %}
 
 {% block content %}
 <br>
@@ -13,6 +13,11 @@
             <p class="card-text">{{restaurant.description|truncatechars:25}}</p>
           </div>
           <ul class="list-group list-group-flush">
+            <li>
+              {% if restaurant.logo %}
+                <img src="{{restaurant.logo.url}}" alt="Logo" width="100px">
+              {% endif %}
+            </li>
             <li class="list-group-item text-center">
                 <a href="{% url 'restaurant-detail' restaurant.id %}" class="btn btn-outline-dark">View</a>
             </li>
@@ -22,4 +27,3 @@
     {% endfor %}
 </div>
 {% endblock content %}
-
